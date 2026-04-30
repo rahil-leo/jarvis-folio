@@ -345,14 +345,20 @@ const labGame3 = document.getElementById('lab-game3');
 const labGame4 = document.getElementById('lab-game4');
 const labGame5 = document.getElementById('lab-game5');
 const labGame6 = document.getElementById('lab-game6');
+const labGame7 = document.getElementById('lab-game7');
+const labGame8 = document.getElementById('lab-game8');
+const labGame9 = document.getElementById('lab-game9');
 const abCloseCta = document.getElementById('ab-close-cta');
 const dodgeCloseCta = document.getElementById('dodge-close-cta');
 const tapCloseCta = document.getElementById('tap-close-cta');
 const puzzleCloseCta = document.getElementById('puzzle-close-cta');
+const aimCloseCta = document.getElementById('aim-close-cta');
+const memoryCloseCta = document.getElementById('memory-close-cta');
+const orbitCloseCta = document.getElementById('orbit-close-cta');
 
 // Show a specific lab screen, hide others
 function showLabScreen(screenId) {
-    [labMenu, labGame1, labGame2, labGame3, labGame4, labGame5, labGame6].forEach(s => {
+    [labMenu, labGame1, labGame2, labGame3, labGame4, labGame5, labGame6, labGame7, labGame8, labGame9].forEach(s => {
         if (s) s.style.display = 'none';
     });
     const target = document.getElementById(screenId);
@@ -391,6 +397,9 @@ document.querySelectorAll('.game-select-card').forEach(card => {
         if (gameId === 'game4') showLabScreen('lab-game4');
         if (gameId === 'game5') showLabScreen('lab-game5');
         if (gameId === 'game6') showLabScreen('lab-game6');
+        if (gameId === 'game7') showLabScreen('lab-game7');
+        if (gameId === 'game8') showLabScreen('lab-game8');
+        if (gameId === 'game9') showLabScreen('lab-game9');
     });
 });
 
@@ -444,6 +453,30 @@ if (tapCloseCta) {
 }
 if (puzzleCloseCta) {
     puzzleCloseCta.addEventListener('click', () => {
+        closeLab();
+        setTimeout(() => {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }, 400);
+    });
+}
+if (aimCloseCta) {
+    aimCloseCta.addEventListener('click', () => {
+        closeLab();
+        setTimeout(() => {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }, 400);
+    });
+}
+if (memoryCloseCta) {
+    memoryCloseCta.addEventListener('click', () => {
+        closeLab();
+        setTimeout(() => {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }, 400);
+    });
+}
+if (orbitCloseCta) {
+    orbitCloseCta.addEventListener('click', () => {
         closeLab();
         setTimeout(() => {
             document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });

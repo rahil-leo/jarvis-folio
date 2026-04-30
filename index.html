@@ -373,6 +373,20 @@
                     <p>Test your precision. Destroy targets before they shrink away.</p>
                     <span class="game-card-tag">Accuracy</span>
                 </div>
+                <!-- Game 8 Card -->
+                <div class="game-select-card glass-panel" data-game="game8">
+                    <div class="game-card-icon">🧠</div>
+                    <h3>Memory Flash</h3>
+                    <p>Memorize the flashing sequence. How far can you go?</p>
+                    <span class="game-card-tag">Brain Training</span>
+                </div>
+                <!-- Game 9 Card -->
+                <div class="game-select-card glass-panel" data-game="game9">
+                    <div class="game-card-icon">⚛️</div>
+                    <h3>Orbit Control</h3>
+                    <p>Reverse your orbit to avoid incoming obstacles.</p>
+                    <span class="game-card-tag">Reflex</span>
+                </div>
             </div>
         </div>
 
@@ -764,6 +778,110 @@
             </div>
         </div>
 
+        <!-- ======= SCREEN 9: Game 8 — Memory Flash ======= -->
+        <div id="lab-game8" class="lab-screen" style="display:none;">
+            <button class="lab-back-btn" data-back="menu"><i class="fas fa-arrow-left"></i> Back</button>
+            <div class="lab-overlay-inner">
+                <div id="memory-wrapper" class="glass-panel">
+                    <div id="memory-hud">
+                        <div class="hud-item">
+                            <span class="hud-label">LEVEL</span>
+                            <span id="memory-level" class="hud-value">1</span>
+                        </div>
+                        <div class="hud-item">
+                            <span class="hud-label">SCORE</span>
+                            <span id="memory-score" class="hud-value">0</span>
+                        </div>
+                    </div>
+
+                    <div id="memory-game-area">
+                        <!-- Number Display Phase -->
+                        <div id="memory-display-phase" style="display:none;">
+                            <div id="memory-number-display" class="memory-number"></div>
+                        </div>
+
+                        <!-- Input Phase -->
+                        <div id="memory-input-phase" style="display:none;">
+                            <h4 class="memory-instruction">Enter the sequence:</h4>
+                            <input type="number" id="memory-input" class="memory-input-box" placeholder="Type here..." autocomplete="off">
+                            <button id="memory-submit-btn" class="btn primary-btn">SUBMIT</button>
+                            <p id="memory-feedback" class="memory-feedback"></p>
+                        </div>
+                    </div>
+
+                    <div id="memory-start-screen" class="game-screen">
+                        <div class="game-screen-inner">
+                            <h3>🧠 Memory Flash</h3>
+                            <p>Memorize the numbers as they appear. Type them back in order.</p>
+                            <button id="memory-start-btn" class="btn primary-btn">START TEST</button>
+                        </div>
+                    </div>
+
+                    <div id="memory-end-screen" class="game-screen" style="display:none;">
+                        <div class="game-screen-inner">
+                            <h3>System Memory Failed ❌</h3>
+                            <p class="final-score-text">Final Level: <span id="memory-final-level">1</span></p>
+                            <p>Score: <span id="memory-final-score">0</span></p>
+                            <p id="memory-correct-answer" style="color:var(--neon-red); margin-top: 10px; font-weight: bold;"></p>
+                            <p id="memory-final-message" style="margin-top: 15px; font-size:1.1rem;">Train More ⚡</p>
+                            <div class="end-buttons" style="margin-top: 20px;">
+                                <button id="memory-restart-btn" class="btn outline-btn">PLAY AGAIN</button>
+                                <button id="memory-close-cta" class="btn primary-btn">Back to Portfolio</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======= SCREEN 10: Game 9 — Orbit Control ======= -->
+        <div id="lab-game9" class="lab-screen" style="display:none;">
+            <button class="lab-back-btn" data-back="menu"><i class="fas fa-arrow-left"></i> Back</button>
+            <div class="lab-overlay-inner">
+                <div id="orbit-wrapper" class="glass-panel">
+                    <div id="orbit-hud">
+                        <div class="hud-item">
+                            <span class="hud-label">SCORE</span>
+                            <span id="orbit-score" class="hud-value">0</span>
+                        </div>
+                        <div class="hud-item">
+                            <span class="hud-label">TIME</span>
+                            <span id="orbit-time" class="hud-value">0s</span>
+                        </div>
+                    </div>
+
+                    <div id="orbit-game-area">
+                        <!-- Canvas for rendering orbit and obstacles -->
+                        <canvas id="orbit-canvas"></canvas>
+                    </div>
+
+                    <div id="orbit-start-screen" class="game-screen">
+                        <div class="game-screen-inner">
+                            <h3>⚛️ Orbit Control</h3>
+                            <p>Protect the core. Tap or click anywhere to reverse your orbit.</p>
+                            <div class="game-legend">
+                                <p>Dodge the incoming glitches!</p>
+                            </div>
+                            <button id="orbit-start-btn" class="btn primary-btn">START SIMULATION</button>
+                        </div>
+                    </div>
+
+                    <div id="orbit-end-screen" class="game-screen" style="display:none;">
+                        <div class="game-screen-inner">
+                            <h3>System Breach ⚠️</h3>
+                            <p class="final-score-text">Final Score: <span id="orbit-final-score">0</span></p>
+                            <p>Survival Time: <span id="orbit-final-time">0s</span></p>
+                            <p id="orbit-final-message" style="margin-top: 15px; font-size:1.1rem; color: #fff;">Reaction speed suboptimal.</p>
+                            <div class="end-buttons" style="margin-top: 20px;">
+                                <button id="orbit-restart-btn" class="btn outline-btn">RESTART</button>
+                                <button id="orbit-close-cta" class="btn primary-btn">Back to Portfolio</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Scripts -->
@@ -778,5 +896,7 @@
     <script src="js/tap-game.js"></script>
     <script src="js/puzzle-game.js"></script>
     <script src="js/aim-game.js"></script>
+    <script src="js/memory-game.js"></script>
+    <script src="js/orbit-game.js"></script>
 </body>
 </html>
