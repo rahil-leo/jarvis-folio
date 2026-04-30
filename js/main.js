@@ -343,12 +343,16 @@ const labGame1 = document.getElementById('lab-game1');
 const labGame2 = document.getElementById('lab-game2');
 const labGame3 = document.getElementById('lab-game3');
 const labGame4 = document.getElementById('lab-game4');
+const labGame5 = document.getElementById('lab-game5');
+const labGame6 = document.getElementById('lab-game6');
 const abCloseCta = document.getElementById('ab-close-cta');
 const dodgeCloseCta = document.getElementById('dodge-close-cta');
+const tapCloseCta = document.getElementById('tap-close-cta');
+const puzzleCloseCta = document.getElementById('puzzle-close-cta');
 
 // Show a specific lab screen, hide others
 function showLabScreen(screenId) {
-    [labMenu, labGame1, labGame2, labGame3, labGame4].forEach(s => {
+    [labMenu, labGame1, labGame2, labGame3, labGame4, labGame5, labGame6].forEach(s => {
         if (s) s.style.display = 'none';
     });
     const target = document.getElementById(screenId);
@@ -385,6 +389,8 @@ document.querySelectorAll('.game-select-card').forEach(card => {
         if (gameId === 'game2') showLabScreen('lab-game2');
         if (gameId === 'game3') showLabScreen('lab-game3');
         if (gameId === 'game4') showLabScreen('lab-game4');
+        if (gameId === 'game5') showLabScreen('lab-game5');
+        if (gameId === 'game6') showLabScreen('lab-game6');
     });
 });
 
@@ -422,6 +428,22 @@ if (abCloseCta) {
 }
 if (dodgeCloseCta) {
     dodgeCloseCta.addEventListener('click', () => {
+        closeLab();
+        setTimeout(() => {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }, 400);
+    });
+}
+if (tapCloseCta) {
+    tapCloseCta.addEventListener('click', () => {
+        closeLab();
+        setTimeout(() => {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }, 400);
+    });
+}
+if (puzzleCloseCta) {
+    puzzleCloseCta.addEventListener('click', () => {
         closeLab();
         setTimeout(() => {
             document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });

@@ -1726,6 +1726,253 @@ a {
     filter: drop-shadow(0 0 8px rgba(0, 255, 204, 0.5));
 }
 
+/* =========================================
+   GAME 5: NEON TAP RUSH
+   ========================================= */
+#tap-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    height: 600px;
+    border-top: 2px solid var(--neon-purple);
+    overflow: hidden;
+    background: radial-gradient(circle at center, rgba(175, 77, 255, 0.05) 0%, transparent 70%);
+}
+
+#tap-hud {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+    background: linear-gradient(to bottom, rgba(5, 8, 16, 0.9) 0%, transparent 100%);
+    pointer-events: none;
+}
+
+#tap-game-area {
+    position: absolute;
+    top: 60px; /* Below HUD */
+    left: 0;
+    width: 100%;
+    height: calc(100% - 60px);
+    overflow: hidden;
+    cursor: crosshair;
+}
+
+.tap-target {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    cursor: pointer;
+    box-sizing: border-box;
+    animation: tapAppear 0.2s ease forwards, tapPulse 1s infinite alternate ease-in-out;
+}
+
+.tap-target::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.tap-target::after {
+    content: '';
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    width: 40%;
+    height: 40%;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.tap-target.blue {
+    background: rgba(0, 243, 255, 0.2);
+    border: 3px solid var(--neon-blue);
+    box-shadow: 0 0 15px var(--neon-blue), inset 0 0 10px var(--neon-blue);
+}
+
+.tap-target.purple {
+    background: rgba(175, 77, 255, 0.2);
+    border: 3px solid var(--neon-purple);
+    box-shadow: 0 0 15px var(--neon-purple), inset 0 0 10px var(--neon-purple);
+}
+
+.tap-target.red {
+    background: rgba(255, 0, 60, 0.2);
+    border: 3px solid var(--neon-red);
+    box-shadow: 0 0 15px var(--neon-red), inset 0 0 10px var(--neon-red);
+}
+
+@keyframes tapAppear {
+    to { transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes tapPulse {
+    from { filter: brightness(1); }
+    to { filter: brightness(1.5); }
+}
+
+.tap-burst {
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 1;
+    pointer-events: none;
+    animation: tapBurstAnim 0.4s ease-out forwards;
+}
+
+@keyframes tapBurstAnim {
+    to { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+}
+
+.tap-score-pop {
+    position: absolute;
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: bold;
+    font-size: 1.2rem;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    animation: tapScoreFloat 0.6s ease-out forwards;
+}
+
+@keyframes tapScoreFloat {
+    0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%, -80px) scale(1.5); }
+}
+
+/* =========================================
+   GAME 6: QUICK FIX SYSTEM (PUZZLE)
+   ========================================= */
+#puzzle-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    border-top: 2px solid var(--jarvis-gold);
+    overflow: hidden;
+    background: rgba(10, 10, 10, 0.9);
+}
+
+#puzzle-hud {
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    background: rgba(255, 204, 0, 0.05);
+    border-bottom: 1px solid rgba(255, 204, 0, 0.2);
+}
+
+#puzzle-game-area {
+    position: relative;
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.puzzle-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 4px;
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    background: rgba(0, 243, 255, 0.1);
+    padding: 4px;
+    border: 1px solid var(--neon-blue);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+    position: relative;
+}
+
+.puzzle-tile {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(5, 8, 16, 0.9);
+    border: 1px solid rgba(0, 243, 255, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--neon-blue);
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                box-shadow 0.2s ease, background 0.2s ease;
+    box-sizing: border-box;
+    /* Adding a subtle tech pattern to tiles */
+    background-image: linear-gradient(0deg, transparent 24%, rgba(0, 243, 255, 0.05) 25%, rgba(0, 243, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 243, 255, 0.05) 75%, rgba(0, 243, 255, 0.05) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 243, 255, 0.05) 25%, rgba(0, 243, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 243, 255, 0.05) 75%, rgba(0, 243, 255, 0.05) 76%, transparent 77%, transparent);
+    background-size: 20px 20px;
+}
+
+.puzzle-tile:hover {
+    box-shadow: inset 0 0 15px rgba(0, 243, 255, 0.4);
+    background-color: rgba(0, 243, 255, 0.1);
+}
+
+.puzzle-tile.empty {
+    background: transparent;
+    border: none;
+    cursor: default;
+    box-shadow: none;
+    background-image: none;
+}
+
+.puzzle-tile.correct {
+    color: var(--jarvis-gold);
+    border-color: rgba(255, 204, 0, 0.5);
+    background-color: rgba(255, 204, 0, 0.05);
+}
+
+/* Glitch animation for startup */
+.glitch-anim {
+    animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0) }
+    20% { transform: translate(-2px, 2px) }
+    40% { transform: translate(-2px, -2px) }
+    60% { transform: translate(2px, 2px) }
+    80% { transform: translate(2px, -2px) }
+    100% { transform: translate(0) }
+}
+
+.scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 243, 255, 0.4), transparent);
+    opacity: 0.5;
+    pointer-events: none;
+    animation: scanline 4s linear infinite;
+    z-index: 5;
+}
+
+@keyframes scanline {
+    0% { top: -10%; }
+    100% { top: 110%; }
+}
+
 /* Footer */
 footer {
     text-align: center;

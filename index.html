@@ -352,6 +352,27 @@
                     <p>Avoid incoming glitches. Survive as long as possible.</p>
                     <span class="game-card-tag">Arcade</span>
                 </div>
+                <!-- Game 5 Card -->
+                <div class="game-select-card glass-panel" data-game="game5">
+                    <div class="game-card-icon">⚡</div>
+                    <h3>Neon Tap Rush</h3>
+                    <p>React quickly! Tap the glowing targets before they vanish.</p>
+                    <span class="game-card-tag">Reaction</span>
+                </div>
+                <!-- Game 6 Card -->
+                <div class="game-select-card glass-panel" data-game="game6">
+                    <div class="game-card-icon">🧩</div>
+                    <h3>Quick Fix System</h3>
+                    <p>System glitch! Rearrange the corrupted data tiles to restore order.</p>
+                    <span class="game-card-tag">Puzzle</span>
+                </div>
+                <!-- Game 7 Card -->
+                <div class="game-select-card glass-panel" data-game="game7">
+                    <div class="game-card-icon">🎯</div>
+                    <h3>Laser Aim Trainer</h3>
+                    <p>Test your precision. Destroy targets before they shrink away.</p>
+                    <span class="game-card-tag">Accuracy</span>
+                </div>
             </div>
         </div>
 
@@ -590,6 +611,159 @@
             </div>
         </div>
 
+        <!-- ======= SCREEN 6: Game 5 — Neon Tap Rush ======= -->
+        <div id="lab-game5" class="lab-screen" style="display:none;">
+            <button class="lab-back-btn" data-back="menu"><i class="fas fa-arrow-left"></i> Back</button>
+            <div class="lab-overlay-inner">
+                <div id="tap-wrapper" class="glass-panel">
+                    <div id="tap-hud">
+                        <div class="hud-item">
+                            <span class="hud-label">SCORE</span>
+                            <span id="tap-score" class="hud-value">0</span>
+                        </div>
+                        <div class="hud-item" id="tap-combo-container" style="opacity: 0;">
+                            <span class="hud-label" style="color:var(--neon-purple)">COMBO</span>
+                            <span id="tap-combo" class="hud-value" style="color:var(--neon-purple)">x1</span>
+                        </div>
+                        <div class="hud-item">
+                            <span class="hud-label">TIME</span>
+                            <span id="tap-timer" class="hud-value">30</span>
+                        </div>
+                    </div>
+
+                    <div id="tap-game-area">
+                        <!-- Targets spawn here via JS -->
+                    </div>
+
+                    <div id="tap-start-screen" class="game-screen">
+                        <div class="game-screen-inner">
+                            <h3>⚡ Neon Tap Rush</h3>
+                            <p>Tap the glowing targets before they disappear.<br>Build your combo for extra points!</p>
+                            <div class="game-legend">
+                                <span class="legend-good">🎯 Tap Fast = +10</span>
+                                <span class="legend-bad">⏳ Miss = Combo Reset</span>
+                            </div>
+                            <button id="tap-start-btn" class="btn primary-btn">START CALIBRATION</button>
+                        </div>
+                    </div>
+
+                    <div id="tap-end-screen" class="game-screen" style="display:none;">
+                        <div class="game-screen-inner">
+                            <h3>⚡ Calibration Complete</h3>
+                            <p class="final-score-text">Reaction Score: <span id="tap-final-score">0</span></p>
+                            <p id="tap-final-message">Impressive reflexes.</p>
+                            <div class="end-buttons" style="margin-top: 20px;">
+                                <button id="tap-restart-btn" class="btn outline-btn">TRY AGAIN</button>
+                                <button id="tap-close-cta" class="btn primary-btn">Ready to Launch</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======= SCREEN 7: Game 6 — Quick Fix System ======= -->
+        <div id="lab-game6" class="lab-screen" style="display:none;">
+            <button class="lab-back-btn" data-back="menu"><i class="fas fa-arrow-left"></i> Back</button>
+            <div class="lab-overlay-inner">
+                <div id="puzzle-wrapper" class="glass-panel">
+                    <div id="puzzle-hud">
+                        <div class="hud-item">
+                            <span class="hud-label">MOVES</span>
+                            <span id="puzzle-moves" class="hud-value">0</span>
+                        </div>
+                        <div class="hud-item">
+                            <span class="hud-label">TIME</span>
+                            <span id="puzzle-timer" class="hud-value">45</span>
+                        </div>
+                    </div>
+
+                    <div id="puzzle-game-area">
+                        <div id="puzzle-grid" class="puzzle-grid">
+                            <!-- Tiles generated via JS -->
+                        </div>
+                        <div class="scanline"></div>
+                    </div>
+
+                    <div id="puzzle-start-screen" class="game-screen">
+                        <div class="game-screen-inner">
+                            <h3>🧩 Quick Fix System</h3>
+                            <p>Warning: System corrupted.<br>Rearrange the 3x3 grid to restore the firewall.</p>
+                            <div class="game-legend">
+                                <p>Click adjacent tiles to slide them into the empty space.</p>
+                            </div>
+                            <button id="puzzle-start-btn" class="btn primary-btn">INITIALIZE REPAIR</button>
+                        </div>
+                    </div>
+
+                    <div id="puzzle-end-screen" class="game-screen" style="display:none;">
+                        <div class="game-screen-inner">
+                            <h3 id="puzzle-end-title">System Restored ✅</h3>
+                            <p id="puzzle-end-desc" class="final-score-text">Moves: <span id="puzzle-final-moves">0</span></p>
+                            <p id="puzzle-final-message">Excellent problem solving skills.</p>
+                            <div class="end-buttons" style="margin-top: 20px;">
+                                <button id="puzzle-restart-btn" class="btn outline-btn">RETRY</button>
+                                <button id="puzzle-close-cta" class="btn primary-btn">Back to Portfolio</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ======= SCREEN 8: Game 7 — Laser Aim Trainer ======= -->
+        <div id="lab-game7" class="lab-screen" style="display:none;">
+            <button class="lab-back-btn" data-back="menu"><i class="fas fa-arrow-left"></i> Back</button>
+            <div class="lab-overlay-inner">
+                <div id="aim-wrapper" class="glass-panel">
+                    <div id="aim-hud">
+                        <div class="hud-item">
+                            <span class="hud-label">SCORE</span>
+                            <span id="aim-score" class="hud-value">0</span>
+                        </div>
+                        <div class="hud-item">
+                            <span class="hud-label">ACCURACY</span>
+                            <span id="aim-accuracy" class="hud-value">100%</span>
+                        </div>
+                        <div class="hud-item">
+                            <span class="hud-label">TIME</span>
+                            <span id="aim-timer" class="hud-value">30</span>
+                        </div>
+                    </div>
+
+                    <div id="aim-game-area">
+                        <!-- Canvas for rendering targets and particles -->
+                        <canvas id="aim-canvas"></canvas>
+                    </div>
+
+                    <div id="aim-start-screen" class="game-screen">
+                        <div class="game-screen-inner">
+                            <h3>🎯 Laser Aim Trainer</h3>
+                            <p>Destroy the glowing targets before they shrink and vanish.</p>
+                            <div class="game-legend">
+                                <span class="legend-good">🎯 Hit = +10</span>
+                                <span class="legend-bad">⏳ Miss = -5</span>
+                            </div>
+                            <button id="aim-start-btn" class="btn primary-btn">START TRAINING</button>
+                        </div>
+                    </div>
+
+                    <div id="aim-end-screen" class="game-screen" style="display:none;">
+                        <div class="game-screen-inner">
+                            <h3>Simulation Complete</h3>
+                            <p class="final-score-text">Final Score: <span id="aim-final-score">0</span></p>
+                            <p>Accuracy: <span id="aim-final-accuracy">0%</span></p>
+                            <p id="aim-final-message">Keep Training ⚡</p>
+                            <div class="end-buttons" style="margin-top: 20px;">
+                                <button id="aim-restart-btn" class="btn outline-btn">PLAY AGAIN</button>
+                                <button id="aim-close-cta" class="btn primary-btn">Back to Portfolio</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Scripts -->
@@ -601,5 +775,8 @@
     <script src="js/budget-game.js"></script>
     <script src="js/ab-test-game.js"></script>
     <script src="js/dodge-game.js"></script>
+    <script src="js/tap-game.js"></script>
+    <script src="js/puzzle-game.js"></script>
+    <script src="js/aim-game.js"></script>
 </body>
 </html>
