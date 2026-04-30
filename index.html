@@ -314,51 +314,155 @@
     <!-- Lab Fullscreen Overlay -->
     <div id="lab-overlay" class="lab-overlay">
         <button class="lab-close-btn" id="close-lab-btn"><i class="fas fa-times"></i></button>
-        <div class="lab-overlay-inner">
+
+        <!-- ======= SCREEN 1: Game Selection Menu ======= -->
+        <div id="lab-menu" class="lab-screen lab-menu-screen">
             <div class="section-header center-align">
                 <h2><i class="fas fa-flask"></i> Interactive Lab</h2>
                 <div class="section-line"></div>
-                <p class="lab-tagline">Think you can catch leads? Prove it.</p>
+                <p class="lab-tagline">Choose your mission, agent.</p>
             </div>
 
-            <div id="game-wrapper" class="glass-panel">
-                <div id="game-hud">
-                    <div class="hud-item">
-                        <span class="hud-label">SCORE</span>
-                        <span id="game-score" class="hud-value">0</span>
-                    </div>
-                    <div class="hud-item">
-                        <span class="hud-label">TIME</span>
-                        <span id="game-timer" class="hud-value">30</span>
-                    </div>
+            <div class="game-select-grid">
+                <!-- Game 1 Card -->
+                <div class="game-select-card glass-panel" data-game="game1">
+                    <div class="game-card-icon">🎯</div>
+                    <h3>Catch The Leads</h3>
+                    <p>Click falling leads to score points. Avoid the bad ones!</p>
+                    <span class="game-card-tag">Action</span>
                 </div>
+                <!-- Game 2 Card -->
+                <div class="game-select-card glass-panel" data-game="game2">
+                    <div class="game-card-icon">📊</div>
+                    <h3>Ad Budget Optimizer</h3>
+                    <p>Allocate ₹1000 across platforms and maximize your leads.</p>
+                    <span class="game-card-tag">Strategy</span>
+                </div>
+            </div>
+        </div>
 
-                <div id="game-area"></div>
-
-                <div id="game-start-screen" class="game-screen">
-                    <div class="game-screen-inner">
-                        <h3>🎯 Catch The Leads</h3>
-                        <p>Click the good leads to score points.<br>Avoid the bad ones!</p>
-                        <div class="game-legend">
-                            <span class="legend-good">💰 📈 📊 🎯 = +10</span>
-                            <span class="legend-bad">❌ 💸 = -5</span>
+        <!-- ======= SCREEN 2: Game 1 — Catch The Leads ======= -->
+        <div id="lab-game1" class="lab-screen" style="display:none;">
+            <button class="lab-back-btn" data-back="menu"><i class="fas fa-arrow-left"></i> Back</button>
+            <div class="lab-overlay-inner">
+                <div id="game-wrapper" class="glass-panel">
+                    <div id="game-hud">
+                        <div class="hud-item">
+                            <span class="hud-label">SCORE</span>
+                            <span id="game-score" class="hud-value">0</span>
                         </div>
-                        <button id="game-start-btn" class="btn primary-btn">START MISSION</button>
+                        <div class="hud-item">
+                            <span class="hud-label">TIME</span>
+                            <span id="game-timer" class="hud-value">30</span>
+                        </div>
                     </div>
-                </div>
-
-                <div id="game-end-screen" class="game-screen" style="display:none;">
-                    <div class="game-screen-inner">
-                        <h3>📡 Mission Complete</h3>
-                        <p class="final-score-text">You generated <span id="final-score">0</span> leads 🚀</p>
-                        <div class="end-buttons">
-                            <button id="game-restart-btn" class="btn outline-btn">RESTART</button>
-                            <button id="game-close-cta" class="btn primary-btn">Let Me Generate Real Leads For You</button>
+                    <div id="game-area"></div>
+                    <div id="game-start-screen" class="game-screen">
+                        <div class="game-screen-inner">
+                            <h3>🎯 Catch The Leads</h3>
+                            <p>Click the good leads to score points.<br>Avoid the bad ones!</p>
+                            <div class="game-legend">
+                                <span class="legend-good">💰 📈 📊 🎯 = +10</span>
+                                <span class="legend-bad">❌ 💸 = -5</span>
+                            </div>
+                            <button id="game-start-btn" class="btn primary-btn">START MISSION</button>
+                        </div>
+                    </div>
+                    <div id="game-end-screen" class="game-screen" style="display:none;">
+                        <div class="game-screen-inner">
+                            <h3>📡 Mission Complete</h3>
+                            <p class="final-score-text">You generated <span id="final-score">0</span> leads 🚀</p>
+                            <div class="end-buttons">
+                                <button id="game-restart-btn" class="btn outline-btn">RESTART</button>
+                                <button id="game-close-cta" class="btn primary-btn">Let Me Generate Real Leads For You</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- ======= SCREEN 3: Game 2 — Ad Budget Optimizer ======= -->
+        <div id="lab-game2" class="lab-screen" style="display:none;">
+            <button class="lab-back-btn" data-back="menu"><i class="fas fa-arrow-left"></i> Back</button>
+            <div class="lab-overlay-inner">
+                <div id="budget-wrapper" class="glass-panel">
+                    <div class="budget-header">
+                        <h3>📊 Ad Budget Optimizer</h3>
+                        <p>You have <strong class="budget-total">₹<span id="budget-remaining">1000</span></strong> to allocate. Distribute wisely!</p>
+                    </div>
+
+                    <div class="budget-sliders">
+                        <div class="slider-group">
+                            <div class="slider-label">
+                                <span><i class="fab fa-facebook"></i> Facebook Ads</span>
+                                <span class="slider-value" id="fb-value">₹0</span>
+                            </div>
+                            <input type="range" id="fb-slider" class="budget-slider fb-slider" min="0" max="1000" value="0" step="10">
+                            <span class="platform-rate">1₹ = 2 leads</span>
+                        </div>
+
+                        <div class="slider-group">
+                            <div class="slider-label">
+                                <span><i class="fab fa-google"></i> Google Ads</span>
+                                <span class="slider-value" id="google-value">₹0</span>
+                            </div>
+                            <input type="range" id="google-slider" class="budget-slider google-slider" min="0" max="1000" value="0" step="10">
+                            <span class="platform-rate">1₹ = 3 leads</span>
+                        </div>
+
+                        <div class="slider-group">
+                            <div class="slider-label">
+                                <span><i class="fab fa-instagram"></i> Instagram Ads</span>
+                                <span class="slider-value" id="insta-value">₹0</span>
+                            </div>
+                            <input type="range" id="insta-slider" class="budget-slider insta-slider" min="0" max="1000" value="0" step="10">
+                            <span class="platform-rate">1₹ = 1.5 leads</span>
+                        </div>
+                    </div>
+
+                    <div class="budget-status">
+                        <span>Budget Used: <strong id="budget-used">₹0</strong> / ₹1000</span>
+                        <div class="budget-bar-bg"><div class="budget-bar-fill" id="budget-bar"></div></div>
+                    </div>
+
+                    <button id="run-campaign-btn" class="btn primary-btn" disabled>
+                        <i class="fas fa-rocket"></i> RUN CAMPAIGN
+                    </button>
+
+                    <!-- Results Screen (hidden) -->
+                    <div id="budget-results" style="display:none;">
+                        <div class="results-header">
+                            <h3>📡 Campaign Report</h3>
+                        </div>
+                        <div class="results-breakdown">
+                            <div class="result-row">
+                                <span><i class="fab fa-facebook"></i> Facebook</span>
+                                <span id="fb-leads" class="lead-count">0 leads</span>
+                            </div>
+                            <div class="result-row">
+                                <span><i class="fab fa-google"></i> Google</span>
+                                <span id="google-leads" class="lead-count">0 leads</span>
+                            </div>
+                            <div class="result-row">
+                                <span><i class="fab fa-instagram"></i> Instagram</span>
+                                <span id="insta-leads" class="lead-count">0 leads</span>
+                            </div>
+                            <div class="result-row total-row">
+                                <span>Total Leads</span>
+                                <span id="total-leads" class="lead-count total">0</span>
+                            </div>
+                        </div>
+                        <p id="budget-message" class="budget-message"></p>
+                        <div class="end-buttons">
+                            <button id="budget-restart-btn" class="btn outline-btn">TRY AGAIN</button>
+                            <button id="budget-close-cta" class="btn primary-btn">Let Me Optimize Your Real Ads</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Scripts -->
@@ -367,5 +471,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/game.js"></script>
+    <script src="js/budget-game.js"></script>
 </body>
 </html>

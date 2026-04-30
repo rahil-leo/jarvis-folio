@@ -329,15 +329,30 @@ function revealSections() {
 }
 
 // ==========================================
-// 6. LAB OVERLAY OPEN / CLOSE
+// 6. LAB OVERLAY — MULTI-SCREEN NAVIGATION
 // ==========================================
 const labOverlay = document.getElementById('lab-overlay');
 const openLabBtn = document.getElementById('open-lab-btn');
 const closeLabBtn = document.getElementById('close-lab-btn');
 const labNavLink = document.querySelector('a[href="#playground"]');
 const gameCloseCta = document.getElementById('game-close-cta');
+const budgetCloseCta = document.getElementById('budget-close-cta');
+
+const labMenu = document.getElementById('lab-menu');
+const labGame1 = document.getElementById('lab-game1');
+const labGame2 = document.getElementById('lab-game2');
+
+// Show a specific lab screen, hide others
+function showLabScreen(screenId) {
+    [labMenu, labGame1, labGame2].forEach(s => {
+        if (s) s.style.display = 'none';
+    });
+    const target = document.getElementById(screenId);
+    if (target) target.style.display = 'flex';
+}
 
 function openLab() {
+    showLabScreen('lab-menu'); // Always open to menu
     labOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
@@ -345,6 +360,8 @@ function openLab() {
 function closeLab() {
     labOverlay.classList.remove('active');
     document.body.style.overflow = 'auto';
+    // Reset to menu for next open
+    setTimeout(() => showLabScreen('lab-menu'), 400);
 }
 
 if (openLabBtn) openLabBtn.addEventListener('click', openLab);
@@ -355,8 +372,34 @@ if (labNavLink) {
         openLab();
     });
 }
+
+// Game selection cards → open specific game
+document.querySelectorAll('.game-select-card').forEach(card => {
+    card.addEventListener('click', () => {
+        const gameId = card.getAttribute('data-game');
+        if (gameId === 'game1') showLabScreen('lab-game1');
+        if (gameId === 'game2') showLabScreen('lab-game2');
+    });
+});
+
+// Back buttons → return to menu
+document.querySelectorAll('.lab-back-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        showLabScreen('lab-menu');
+    });
+});
+
+// CTA buttons from game end screens → close lab + scroll to contact
 if (gameCloseCta) {
     gameCloseCta.addEventListener('click', () => {
+        closeLab();
+        setTimeout(() => {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }, 400);
+    });
+}
+if (budgetCloseCta) {
+    budgetCloseCta.addEventListener('click', () => {
         closeLab();
         setTimeout(() => {
             document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
