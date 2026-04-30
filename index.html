@@ -338,6 +338,13 @@
                     <p>Allocate ₹1000 across platforms and maximize your leads.</p>
                     <span class="game-card-tag">Strategy</span>
                 </div>
+                <!-- Game 3 Card -->
+                <div class="game-select-card glass-panel" data-game="game3">
+                    <div class="game-card-icon">A/B</div>
+                    <h3>A/B Test Challenge</h3>
+                    <p>Compare two ad variations and guess which one performs better.</p>
+                    <span class="game-card-tag">Quiz</span>
+                </div>
             </div>
         </div>
 
@@ -463,6 +470,71 @@
             </div>
         </div>
 
+        <!-- ======= SCREEN 4: Game 3 — A/B Test Challenge ======= -->
+        <div id="lab-game3" class="lab-screen" style="display:none;">
+            <button class="lab-back-btn" data-back="menu"><i class="fas fa-arrow-left"></i> Back</button>
+            <div class="lab-overlay-inner">
+                <div id="ab-wrapper" class="glass-panel">
+                    <div class="ab-header">
+                        <div class="ab-header-top">
+                            <h3>A/B Test Challenge</h3>
+                            <span id="ab-round-indicator" class="ab-round-badge">Round 1 / 5</span>
+                        </div>
+                        <p>Which ad variation would perform better? Choose wisely.</p>
+                        <div class="ab-score-display">Score: <span id="ab-score">0</span></div>
+                    </div>
+
+                    <!-- Game Area -->
+                    <div id="ab-game-area">
+                        <div class="ab-cards-container">
+                            <!-- Ad A -->
+                            <div class="ab-card glass-panel" id="ad-a-btn">
+                                <div class="ab-card-label">Variation A</div>
+                                <div class="ab-card-content">
+                                    <h4 id="ad-a-headline">Headline A</h4>
+                                    <p id="ad-a-desc">Description A goes here. It tells you why you need this.</p>
+                                    <button class="btn primary-btn ab-card-cta" id="ad-a-cta">Click Here</button>
+                                </div>
+                            </div>
+                            
+                            <div class="ab-vs-badge">VS</div>
+
+                            <!-- Ad B -->
+                            <div class="ab-card glass-panel" id="ad-b-btn">
+                                <div class="ab-card-label">Variation B</div>
+                                <div class="ab-card-content">
+                                    <h4 id="ad-b-headline">Headline B</h4>
+                                    <p id="ad-b-desc">Description B goes here. It focuses on features.</p>
+                                    <button class="btn primary-btn ab-card-cta" id="ad-b-cta">Learn More</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Result Reveal Area (hidden initially) -->
+                        <div id="ab-result-area" style="display:none;">
+                            <div class="ab-result-badge" id="ab-result-badge">Correct!</div>
+                            <p id="ab-explanation" class="ab-explanation">Explanation goes here.</p>
+                            <button id="ab-next-btn" class="btn primary-btn">Next Round <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- End Screen -->
+                    <div id="ab-end-screen" class="game-screen" style="display:none;">
+                        <div class="game-screen-inner">
+                            <h3>Challenge Complete</h3>
+                            <p class="final-score-text">Final Score: <span id="ab-final-score">0</span></p>
+                            <p id="ab-final-message" class="ab-final-message">You think like a marketer 🚀</p>
+                            <div class="end-buttons">
+                                <button id="ab-restart-btn" class="btn outline-btn">TRY AGAIN</button>
+                                <button id="ab-close-cta" class="btn primary-btn">Work With Me</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Scripts -->
@@ -472,5 +544,6 @@
     <script src="js/main.js"></script>
     <script src="js/game.js"></script>
     <script src="js/budget-game.js"></script>
+    <script src="js/ab-test-game.js"></script>
 </body>
 </html>
