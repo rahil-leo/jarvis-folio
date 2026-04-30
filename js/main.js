@@ -342,11 +342,13 @@ const labMenu = document.getElementById('lab-menu');
 const labGame1 = document.getElementById('lab-game1');
 const labGame2 = document.getElementById('lab-game2');
 const labGame3 = document.getElementById('lab-game3');
+const labGame4 = document.getElementById('lab-game4');
 const abCloseCta = document.getElementById('ab-close-cta');
+const dodgeCloseCta = document.getElementById('dodge-close-cta');
 
 // Show a specific lab screen, hide others
 function showLabScreen(screenId) {
-    [labMenu, labGame1, labGame2, labGame3].forEach(s => {
+    [labMenu, labGame1, labGame2, labGame3, labGame4].forEach(s => {
         if (s) s.style.display = 'none';
     });
     const target = document.getElementById(screenId);
@@ -382,6 +384,7 @@ document.querySelectorAll('.game-select-card').forEach(card => {
         if (gameId === 'game1') showLabScreen('lab-game1');
         if (gameId === 'game2') showLabScreen('lab-game2');
         if (gameId === 'game3') showLabScreen('lab-game3');
+        if (gameId === 'game4') showLabScreen('lab-game4');
     });
 });
 
@@ -411,6 +414,14 @@ if (budgetCloseCta) {
 }
 if (abCloseCta) {
     abCloseCta.addEventListener('click', () => {
+        closeLab();
+        setTimeout(() => {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }, 400);
+    });
+}
+if (dodgeCloseCta) {
+    dodgeCloseCta.addEventListener('click', () => {
         closeLab();
         setTimeout(() => {
             document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });

@@ -345,6 +345,13 @@
                     <p>Compare two ad variations and guess which one performs better.</p>
                     <span class="game-card-tag">Quiz</span>
                 </div>
+                <!-- Game 4 Card -->
+                <div class="game-select-card glass-panel" data-game="game4">
+                    <div class="game-card-icon">🕹️</div>
+                    <h3>Dodge the System</h3>
+                    <p>Avoid incoming glitches. Survive as long as possible.</p>
+                    <span class="game-card-tag">Arcade</span>
+                </div>
             </div>
         </div>
 
@@ -535,6 +542,54 @@
             </div>
         </div>
 
+        <!-- ======= SCREEN 5: Game 4 — Dodge the System ======= -->
+        <div id="lab-game4" class="lab-screen" style="display:none;">
+            <button class="lab-back-btn" data-back="menu"><i class="fas fa-arrow-left"></i> Back</button>
+            <div class="lab-overlay-inner">
+                <div id="dodge-wrapper" class="glass-panel">
+                    <div id="dodge-hud">
+                        <div class="hud-item">
+                            <span class="hud-label">SCORE</span>
+                            <span id="dodge-score" class="hud-value">0</span>
+                        </div>
+                        <div class="hud-item">
+                            <span class="hud-label">TIME</span>
+                            <span id="dodge-time" class="hud-value">0s</span>
+                        </div>
+                    </div>
+
+                    <div id="dodge-game-area">
+                        <!-- Canvas for game rendering -->
+                        <canvas id="dodge-canvas"></canvas>
+                    </div>
+
+                    <div id="dodge-start-screen" class="game-screen">
+                        <div class="game-screen-inner">
+                            <h3>🕹️ Dodge the System</h3>
+                            <p>Control the core. Avoid the glitches.<br>Survive.</p>
+                            <div class="game-legend">
+                                <p>Desktop: ⬅️ ➡️ Arrow Keys</p>
+                                <p>Mobile: Tap Left/Right side</p>
+                            </div>
+                            <button id="dodge-start-btn" class="btn primary-btn">INITIATE SEQUENCE</button>
+                        </div>
+                    </div>
+
+                    <div id="dodge-end-screen" class="game-screen" style="display:none;">
+                        <div class="game-screen-inner">
+                            <h3>⚠️ System Failed</h3>
+                            <p class="final-score-text">Score: <span id="dodge-final-score">0</span></p>
+                            <p>Survival Time: <span id="dodge-final-time">0</span>s</p>
+                            <div class="end-buttons" style="margin-top: 20px;">
+                                <button id="dodge-restart-btn" class="btn outline-btn">REBOOT SYSTEM</button>
+                                <button id="dodge-close-cta" class="btn primary-btn">Back to Reality</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Scripts -->
@@ -545,5 +600,6 @@
     <script src="js/game.js"></script>
     <script src="js/budget-game.js"></script>
     <script src="js/ab-test-game.js"></script>
+    <script src="js/dodge-game.js"></script>
 </body>
 </html>
