@@ -315,6 +315,12 @@ function revealSections() {
         x: 50, opacity: 0, duration: 1, ease: 'power3.out'
     });
 
+    // Lab CTA button reveal
+    gsap.to('#lab-cta', {
+        scrollTrigger: { trigger: '#lab-cta', start: 'top 90%' },
+        opacity: 1, y: 0, visibility: 'visible', duration: 0.8, ease: 'power3.out'
+    });
+
     // Footer
     gsap.to('footer', {
         scrollTrigger: { trigger: 'footer', start: 'top 95%' },
@@ -323,7 +329,43 @@ function revealSections() {
 }
 
 // ==========================================
-// 6. NAVBAR SCROLL EFFECT
+// 6. LAB OVERLAY OPEN / CLOSE
+// ==========================================
+const labOverlay = document.getElementById('lab-overlay');
+const openLabBtn = document.getElementById('open-lab-btn');
+const closeLabBtn = document.getElementById('close-lab-btn');
+const labNavLink = document.querySelector('a[href="#playground"]');
+const gameCloseCta = document.getElementById('game-close-cta');
+
+function openLab() {
+    labOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLab() {
+    labOverlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+if (openLabBtn) openLabBtn.addEventListener('click', openLab);
+if (closeLabBtn) closeLabBtn.addEventListener('click', closeLab);
+if (labNavLink) {
+    labNavLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        openLab();
+    });
+}
+if (gameCloseCta) {
+    gameCloseCta.addEventListener('click', () => {
+        closeLab();
+        setTimeout(() => {
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }, 400);
+    });
+}
+
+// ==========================================
+// 7. NAVBAR SCROLL EFFECT
 // ==========================================
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {

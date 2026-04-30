@@ -867,6 +867,286 @@ a {
     box-shadow: 0 0 20px var(--neon-blue);
 }
 
+/* =========================================
+   8. LAB CTA BUTTON
+   ========================================= */
+.lab-cta-wrapper {
+    text-align: center;
+    padding: 40px 20px 60px;
+}
+
+.lab-open-btn {
+    font-size: 1.1rem;
+    padding: 18px 40px;
+    animation: labGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes labGlow {
+    0% { box-shadow: 0 0 10px rgba(0, 243, 255, 0.2); }
+    100% { box-shadow: 0 0 30px rgba(0, 243, 255, 0.5), 0 0 60px rgba(0, 243, 255, 0.2); }
+}
+
+/* =========================================
+   8b. LAB FULLSCREEN OVERLAY
+   ========================================= */
+.lab-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(5, 8, 16, 0.96);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    overflow-y: auto;
+}
+
+.lab-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lab-overlay-inner {
+    width: 100%;
+    max-width: 900px;
+    padding: 40px 20px;
+}
+
+.lab-close-btn {
+    position: fixed;
+    top: 25px;
+    right: 30px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    cursor: pointer;
+    z-index: 2001;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lab-close-btn:hover {
+    border-color: var(--neon-red);
+    color: var(--neon-red);
+    box-shadow: 0 0 15px rgba(255, 0, 60, 0.4);
+}
+
+.lab-tagline {
+    color: #aaa;
+    font-size: 1.2rem;
+    margin-top: 15px;
+    letter-spacing: 1px;
+}
+
+#game-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    height: 520px;
+    overflow: hidden;
+    border-top: 2px solid var(--jarvis-gold);
+}
+
+/* Game HUD (Score + Timer) */
+#game-hud {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 25px;
+    background: rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(255, 204, 0, 0.2);
+    position: relative;
+    z-index: 10;
+}
+
+.hud-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hud-label {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    color: var(--jarvis-gold);
+    letter-spacing: 2px;
+}
+
+.hud-value {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 0 0 10px var(--jarvis-gold);
+}
+
+/* Game Area */
+#game-area {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 70px); /* Minus HUD */
+    overflow: hidden;
+    cursor: crosshair;
+}
+
+/* Falling Item */
+.falling-item {
+    position: absolute;
+    font-size: 2.2rem;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.1s ease;
+    filter: drop-shadow(0 0 8px rgba(0, 243, 255, 0.5));
+    z-index: 5;
+}
+
+.falling-item:hover {
+    transform: scale(1.3);
+}
+
+.falling-item.good {
+    filter: drop-shadow(0 0 12px rgba(0, 243, 255, 0.7));
+}
+
+.falling-item.bad {
+    filter: drop-shadow(0 0 12px rgba(255, 0, 60, 0.7));
+}
+
+/* Score Pop Animation */
+.score-pop {
+    position: absolute;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    pointer-events: none;
+    z-index: 20;
+    animation: scoreFloat 0.8s ease-out forwards;
+}
+
+.score-pop.positive {
+    color: var(--neon-blue);
+    text-shadow: 0 0 10px var(--neon-blue);
+}
+
+.score-pop.negative {
+    color: var(--neon-red);
+    text-shadow: 0 0 10px var(--neon-red);
+}
+
+@keyframes scoreFloat {
+    0% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(-60px) scale(1.5); }
+}
+
+/* Click Burst Effect */
+.click-burst {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 15;
+    animation: burstAnim 0.4s ease-out forwards;
+}
+
+.click-burst.good-burst {
+    border: 2px solid var(--neon-blue);
+    box-shadow: 0 0 15px var(--neon-blue);
+}
+
+.click-burst.bad-burst {
+    border: 2px solid var(--neon-red);
+    box-shadow: 0 0 15px var(--neon-red);
+}
+
+@keyframes burstAnim {
+    0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
+}
+
+/* Start & End Screens */
+.game-screen {
+    position: absolute;
+    top: 70px; /* Below HUD */
+    left: 0;
+    width: 100%;
+    height: calc(100% - 70px);
+    background: rgba(5, 8, 16, 0.92);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+}
+
+.game-screen-inner {
+    text-align: center;
+    padding: 30px;
+}
+
+.game-screen-inner h3 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--jarvis-gold);
+    text-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+}
+
+.game-screen-inner p {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-bottom: 25px;
+    line-height: 1.8;
+}
+
+.game-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+}
+
+.legend-good {
+    color: var(--neon-blue);
+    text-shadow: 0 0 5px rgba(0, 243, 255, 0.4);
+}
+
+.legend-bad {
+    color: var(--neon-red);
+    text-shadow: 0 0 5px rgba(255, 0, 60, 0.4);
+}
+
+.final-score-text {
+    font-size: 1.8rem !important;
+    color: #fff !important;
+}
+
+.final-score-text span {
+    color: var(--jarvis-gold);
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    text-shadow: 0 0 20px rgba(255, 204, 0, 0.7);
+}
+
+.end-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 /* Footer */
 footer {
     text-align: center;
@@ -916,4 +1196,7 @@ footer {
     .portfolio-grid { grid-template-columns: 1fr; }
     .testimonials-slider { padding: 30px; }
     .quote { font-size: 1.2rem; }
+    #game-wrapper { height: 450px; }
+    .game-screen-inner h3 { font-size: 1.8rem; }
+    .falling-item { font-size: 1.8rem; }
 }

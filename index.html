@@ -35,6 +35,7 @@
             <li><a href="#services">Services</a></li>
             <li><a href="#work">Work</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="#playground">Lab</a></li>
         </ul>
         <div class="mobile-menu-btn" id="mobile-toggle"><i class="fas fa-bars"></i></div>
     </nav>
@@ -273,7 +274,14 @@
                 </div>
             </div>
         </section>
-        
+
+        <!-- Lab CTA Button (between Contact and Footer) -->
+        <div class="lab-cta-wrapper hidden-section" id="lab-cta">
+            <button class="btn primary-btn lab-open-btn" id="open-lab-btn">
+                <i class="fas fa-flask"></i> Try My Interactive Lab
+            </button>
+        </div>
+
         <!-- Footer -->
         <footer class="hidden-section">
             <p>&copy; 2026 J.A.R.V.I.S. Marketing Protocol. All Rights Reserved.</p>
@@ -303,10 +311,61 @@
         </div>
     </div>
 
+    <!-- Lab Fullscreen Overlay -->
+    <div id="lab-overlay" class="lab-overlay">
+        <button class="lab-close-btn" id="close-lab-btn"><i class="fas fa-times"></i></button>
+        <div class="lab-overlay-inner">
+            <div class="section-header center-align">
+                <h2><i class="fas fa-flask"></i> Interactive Lab</h2>
+                <div class="section-line"></div>
+                <p class="lab-tagline">Think you can catch leads? Prove it.</p>
+            </div>
+
+            <div id="game-wrapper" class="glass-panel">
+                <div id="game-hud">
+                    <div class="hud-item">
+                        <span class="hud-label">SCORE</span>
+                        <span id="game-score" class="hud-value">0</span>
+                    </div>
+                    <div class="hud-item">
+                        <span class="hud-label">TIME</span>
+                        <span id="game-timer" class="hud-value">30</span>
+                    </div>
+                </div>
+
+                <div id="game-area"></div>
+
+                <div id="game-start-screen" class="game-screen">
+                    <div class="game-screen-inner">
+                        <h3>🎯 Catch The Leads</h3>
+                        <p>Click the good leads to score points.<br>Avoid the bad ones!</p>
+                        <div class="game-legend">
+                            <span class="legend-good">💰 📈 📊 🎯 = +10</span>
+                            <span class="legend-bad">❌ 💸 = -5</span>
+                        </div>
+                        <button id="game-start-btn" class="btn primary-btn">START MISSION</button>
+                    </div>
+                </div>
+
+                <div id="game-end-screen" class="game-screen" style="display:none;">
+                    <div class="game-screen-inner">
+                        <h3>📡 Mission Complete</h3>
+                        <p class="final-score-text">You generated <span id="final-score">0</span> leads 🚀</p>
+                        <div class="end-buttons">
+                            <button id="game-restart-btn" class="btn outline-btn">RESTART</button>
+                            <button id="game-close-cta" class="btn primary-btn">Let Me Generate Real Leads For You</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/game.js"></script>
 </body>
 </html>
