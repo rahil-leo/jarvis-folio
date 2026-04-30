@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio | Iron Man Theme</title>
+    <meta name="description" content="Cinematic futuristic digital marketer portfolio inspired by Iron Man interface.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="locked">
+    <!-- Three.js Canvas Container (Fixed Background) -->
+    <div id="canvas-container"></div>
+
+    <!-- Cinematic Flash Overlay (for reactor explosion) -->
+    <div id="flash-overlay"></div>
+
+    <!-- Top Navigation (hidden until activated) -->
+    <nav id="navbar" class="nav-hidden">
+        <div class="nav-brand">
+            <span class="glitch-text" data-text="J.A.R.V.I.S.">J.A.R.V.I.S.</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-menu-btn" id="mobile-toggle"><i class="fas fa-bars"></i></div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main id="main-content">
+        
+        <!-- ========================= -->
+        <!-- 1. HERO SECTION           -->
+        <!-- ========================= -->
+        <section id="hero" class="section hero-section">
+            <!-- The Arc Reactor (CENTER OF THE SCREEN) -->
+            <div id="arc-reactor">
+                <div class="reactor-glow"></div>
+                <div class="core-inner"></div>
+                <div class="core-outer"></div>
+                <div class="coil-container"></div>
+                <div class="reactor-ring ring-1"></div>
+                <div class="reactor-ring ring-2"></div>
+            </div>
+
+            <!-- Hero Text (hidden, revealed after reactor click) -->
+            <div class="hero-content hidden-section">
+                <h1 class="hero-title">I Grow Brands with<br>Data & Strategy</h1>
+                <p class="hero-subtitle">Digital Marketing Specialist</p>
+                <div class="hero-cta-group">
+                    <a href="#work" class="btn primary-btn">View My Work</a>
+                    <a href="#contact" class="btn outline-btn">Contact Me</a>
+                </div>
+            </div>
+
+            <!-- Intro prompt -->
+            <div class="reactor-prompt">
+                <span>TAP THE REACTOR</span>
+                <i class="fas fa-hand-pointer"></i>
+            </div>
+        </section>
+
+        <!-- ========================= -->
+        <!-- 2. ABOUT ME SECTION       -->
+        <!-- ========================= -->
+        <section id="about" class="section about-section hidden-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-user-astronaut"></i> Identity Protocol</h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="about-card glass-panel">
+                    <div class="about-grid">
+                        <div class="about-image-wrapper">
+                            <div class="profile-placeholder">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="image-border"></div>
+                        </div>
+                        <div class="about-text">
+                            <h3>Hi, I'm the Strategist.</h3>
+                            <p>I am a digital marketer focused on human-centric growth driven by data. While my tools are advanced and analytical, my approach is entirely focused on delivering real, tangible results for your business.</p>
+                            
+                            <ul class="focus-areas">
+                                <li><i class="fas fa-check-circle"></i> 5+ Years Experience in Digital Growth</li>
+                                <li><i class="fas fa-check-circle"></i> Focus: ROI, Conversion Rates, Scalability</li>
+                                <li><i class="fas fa-check-circle"></i> Results Mindset: Data beats intuition.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================= -->
+        <!-- 3. SERVICES SECTION       -->
+        <!-- ========================= -->
+        <section id="services" class="section services-section hidden-section">
+            <div class="container">
+                <div class="section-header right-align">
+                    <h2><i class="fas fa-satellite-dish"></i> Core Capabilities</h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card glass-panel">
+                        <div class="card-icon"><i class="fas fa-hashtag"></i></div>
+                        <h3>Social Media Marketing</h3>
+                        <p>Building engaged communities and amplifying your brand voice across social platforms.</p>
+                    </div>
+                    <div class="service-card glass-panel">
+                        <div class="card-icon"><i class="fas fa-funnel-dollar"></i></div>
+                        <h3>Paid Ads (Meta/Google)</h3>
+                        <p>Precision-targeted ad campaigns designed to maximize ROI and lower acquisition costs.</p>
+                    </div>
+                    <div class="service-card glass-panel">
+                        <div class="card-icon"><i class="fas fa-search"></i></div>
+                        <h3>SEO Optimization</h3>
+                        <p>Dominating search engine results to drive high-intent organic traffic to your assets.</p>
+                    </div>
+                    <div class="service-card glass-panel">
+                        <div class="card-icon"><i class="fas fa-project-diagram"></i></div>
+                        <h3>Funnel Strategy</h3>
+                        <p>Architecting high-converting sales funnels that turn cold traffic into loyal customers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================= -->
+        <!-- 4. SKILLS SECTION         -->
+        <!-- ========================= -->
+        <section id="skills" class="section skills-section hidden-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-bar"></i> System Protocols</h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="skills-container glass-panel">
+                    <div class="skill-item">
+                        <div class="skill-info"><span>SEO Optimization</span><span>90%</span></div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" data-width="90%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Paid Ads (PPC)</span><span>85%</span></div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" data-width="85%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Data Analytics</span><span>95%</span></div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" data-width="95%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Brand Strategy</span><span>80%</span></div>
+                        <div class="progress-bar-bg"><div class="progress-bar-fill" data-width="80%"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================= -->
+        <!-- 5. PORTFOLIO / CASE STUDIES -->
+        <!-- ========================= -->
+        <section id="work" class="section work-section hidden-section">
+            <div class="container">
+                <div class="section-header center-align">
+                    <h2><i class="fas fa-archive"></i> Mission Archives</h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="portfolio-grid">
+                    <div class="portfolio-card" data-project="1">
+                        <div class="card-image bg-project-1">
+                            <div class="card-overlay"><span><i class="fas fa-eye"></i> View Details</span></div>
+                        </div>
+                        <div class="card-content glass-panel">
+                            <h3>Global E-commerce Scale</h3>
+                            <p class="highlight-result">+300% ROAS in 90 Days</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-card" data-project="2">
+                        <div class="card-image bg-project-2">
+                            <div class="card-overlay"><span><i class="fas fa-eye"></i> View Details</span></div>
+                        </div>
+                        <div class="card-content glass-panel">
+                            <h3>SaaS Lead Generation</h3>
+                            <p class="highlight-result">10k+ Qualified Leads</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-card" data-project="3">
+                        <div class="card-image bg-project-3">
+                            <div class="card-overlay"><span><i class="fas fa-eye"></i> View Details</span></div>
+                        </div>
+                        <div class="card-content glass-panel">
+                            <h3>Local Business SEO</h3>
+                            <p class="highlight-result">Ranked #1 for 15 Keywords</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================= -->
+        <!-- 6. TESTIMONIALS SECTION   -->
+        <!-- ========================= -->
+        <section id="testimonials" class="section testimonials-section hidden-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-quote-left"></i> Client Logs</h2>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="testimonials-slider glass-panel">
+                    <div class="testimonial-slide active">
+                        <p class="quote">"Absolutely transformed our digital presence. The data-driven approach brought us results we didn't think were possible."</p>
+                        <h4 class="author">- Sarah Jenkins, CEO of TechStart</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================= -->
+        <!-- 7. CONTACT SECTION        -->
+        <!-- ========================= -->
+        <section id="contact" class="section contact-section hidden-section">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h2>Let's Grow Your Business</h2>
+                        <p>Ready to deploy new marketing protocols? Initiate contact through the secure channel below or use direct communication lines.</p>
+                        
+                        <div class="social-buttons">
+                            <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                            <a href="#" class="social-btn"><i class="fas fa-envelope"></i> Email</a>
+                            <a href="#" class="social-btn"><i class="fab fa-instagram"></i> Instagram</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form-wrapper glass-panel">
+                        <form id="contactForm">
+                            <div class="input-group">
+                                <label for="name">Identification (Name)</label>
+                                <input type="text" id="name" required placeholder="Enter your name">
+                            </div>
+                            <div class="input-group">
+                                <label for="email">Comms Link (Email)</label>
+                                <input type="email" id="email" required placeholder="Enter your email">
+                            </div>
+                            <div class="input-group">
+                                <label for="message">Transmission (Message)</label>
+                                <textarea id="message" rows="4" required placeholder="How can we help you grow?"></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                <span>SEND TRANSMISSION</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="hidden-section">
+            <p>&copy; 2026 J.A.R.V.I.S. Marketing Protocol. All Rights Reserved.</p>
+        </footer>
+
+    </main>
+
+    <!-- Portfolio Modal Overlay -->
+    <div id="project-modal" class="modal-overlay">
+        <div class="modal-content glass-panel">
+            <button class="close-modal"><i class="fas fa-times"></i></button>
+            <div class="modal-body">
+                <h2 id="modal-title">Project Title</h2>
+                <div class="modal-meta">
+                    <span id="modal-result" class="highlight-result">Result</span>
+                </div>
+                <div class="modal-image-placeholder">
+                    <i class="fas fa-image"></i>
+                </div>
+                <p id="modal-desc">Detailed project description goes here.</p>
+                <div class="modal-tags">
+                    <span>Strategy</span>
+                    <span>Execution</span>
+                    <span>Analytics</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
